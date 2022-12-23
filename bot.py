@@ -8,6 +8,7 @@ from discord.ext import commands
 
 load_dotenv()
 
+
 async def send_message(message, user_message, is_private):
     try:
         response = responses.get_message(user_message)
@@ -25,7 +26,7 @@ def run_bot():
     intents.message_content = True
     intents.members = True
 
-    client = commands.Bot(command_prefix="z.",intents=intents)
+    client = commands.Bot(command_prefix="z.", intents=intents)
     client.remove_command('help')
 
     @client.event
@@ -51,7 +52,6 @@ def run_bot():
         user_message = str(message.content)
 
         print(f'{user_message},said by {username} on {channel}')
-
 
         if user_message[0] == '*':
             user_message = user_message[1:]
@@ -80,7 +80,7 @@ def run_bot():
         for channel in member.guild.channels:
             if str(channel) == "bot-fire":
                 await channel.send(f'Welcome to the server {member.mention}.\n'
-                                    'For a list of all the things i can do, type \'z.help\'')
+                                   'For a list of all the things i can do, type \'z.help\'')
 
     @client.command()
     async def op(ctx):
@@ -104,8 +104,6 @@ def run_bot():
                        '\n\n~Kami-sama Commands:'
                        '\nz.new-channel <name> - Creates new channel with said name'
                        '\nz.del-channel <name> - Deletes existing channel with said name`')
-
-
 
     @client.command(name='facts')
     async def interesting_facts(ctx):
